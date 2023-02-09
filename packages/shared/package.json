@@ -1,0 +1,62 @@
+{
+  "name": "@fit-screen/shared",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@7.9.5",
+  "description": "",
+  "author": "jp-liu <fortune_coder@foxmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/jp-liu/@fit-screen/shared#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.jp-liu/@fit-screen",
+    "directory": "./packages/shared"
+  },
+  "bugs": "https://github.com/jp-liu/@fit-screen#issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "dev": "unbuild --stub",
+    "start": "esno src/index.ts",
+    "build": "unbuild",
+    "lint": "eslint . --cache",
+    "lint-fix": "eslint . --fix",
+    "prepublish": "pnpm build",
+    "release": "bumpp && npm publish",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.26.2",
+    "@types/node": "^18.7.14",
+    "bumpp": "^8.2.1",
+    "eslint": "^8.23.0",
+    "esno": "^0.16.3",
+    "pnpm": "^7.9.5",
+    "typescript": "^4.8.2",
+    "unbuild": "^0.8.9"
+  }
+}
