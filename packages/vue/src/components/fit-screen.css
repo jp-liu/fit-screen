@@ -1,0 +1,41 @@
+body {
+  overflow: hidden;
+}
+ .fit-screen {
+   position: relative;
+   height: 100vh;
+   width: 100vw;
+ }
+
+ .fit-screen.fit,
+ .fit-screen.full {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   overflow: hidden;
+ }
+
+ .fit-screen.fit .fit-screen-scale,
+ .fit-screen.full .fit-screen-scale {
+   transform-origin: center center;
+ }
+
+ .fit-screen.scrollY {
+   overflow-x: hidden;
+ }
+
+ .fit-screen.scrollY .fit-screen-scale {
+   transform-origin: left top;
+ }
+
+ .fit-screen.scrollX {
+   overflow-y: hidden;
+ }
+
+ .fit-screen.scrollX .fit-screen-scale {
+   transform-origin: left top;
+ }
+
+ .fit-screen-entity {
+   overflow: hidden;
+ }
