@@ -1,8 +1,9 @@
 import type { PropType } from 'vue-demi'
-import { computed, defineComponent, h, toRefs } from 'vue-demi'
+import { computed, defineComponent, toRefs } from 'vue-demi'
 import { FitScreenEnum } from '@fit-screen/shared'
 import { useFitScreen } from '../hook/useFitScreen.hook'
-import './fit-screen.css'
+import hDemi, { slot } from '../helper/h-demi'
+import styles from './FitScreen.module.scss'
 
 export default defineComponent({
   name: 'FitScreen',
@@ -31,7 +32,7 @@ export default defineComponent({
       return mode.value === FitScreenEnum.SCROLL_Y || mode.value === FitScreenEnum.SCROLL_X
     })
 
-    const { previewRef, entityRef } = useFitScreen({ width, height, mode })
+    const { previewRef, entityRef } = useFitScreen(props)
 
     const previewRefStyle = computed(() => {
       return [
@@ -47,15 +48,16 @@ export default defineComponent({
     return { showEntity, previewRef, entityRef, previewRefStyle }
   },
   render() {
-    const previewNode = h(
+    const previewNode = hDemi(
       'div',
-      { ref: 'previewRef', class: 'fit-screen-scale' },
-      h('div', { style: this.previewRefStyle }, this.$slots.default?.()),
+      { ref: 'previewRef', class: ['fit-screen-scale', styles['fit-screen-scale']] },
+      [hDemi('div', { style: this.previewRefStyle }, slot(this.$slots.default))],
     )
 
-    const entityNode = h('div', { ref: 'entityRef', class: 'fit-screen-entity' }, previewNode)
+    const entityNode = hDemi('div', { ref: 'entityRef', class: ['fit-screen-entity', styles['fit-screen-entity']] }, [previewNode])
     const resultNode = this.showEntity ? entityNode : previewNode
 
-    return h('div', { class: `fit-screen ${this.mode}` }, resultNode)
+    return hDemi('div', { class: ['fit-screen', styles['fit-screen'], styles[this.mode]] }, [resultNode])
+    // return hDemi('div', {}, [hDemi('div', {}, 'test')])
   },
 })

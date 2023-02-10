@@ -1,0 +1,43 @@
+body {
+  overflow: hidden;
+}
+
+.fit-screen {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+
+  &.fit,
+  &.full {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    .fit-screen-scale {
+      transform-origin: center center;
+    }
+  }
+
+  &.scrollY {
+    overflow-x: hidden;
+
+    .fit-screen-scale {
+      transform-origin: left top;
+    }
+
+  }
+
+  &.scrollX {
+    overflow-y: hidden;
+
+    .fit-screen-scale {
+      transform-origin: left top;
+    }
+
+  }
+
+  .fit-screen-entity {
+    overflow: hidden;
+  }
+}
