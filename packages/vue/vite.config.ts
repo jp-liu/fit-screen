@@ -1,3 +1,4 @@
+// import { unlinkSync } from 'fs'
 import { resolve } from 'path'
 import type { UserConfig } from 'vite'
 import { defineConfig } from 'vite'
@@ -12,19 +13,10 @@ function pathResolve(dir: string) {
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const config: UserConfig = {
-    resolve: {
-      alias: [
-        {
-          find: '~',
-          replacement: pathResolve('src'),
-        },
-        {
-          find: '@fit-screen/vue',
-          replacement: pathResolve('src'),
-        },
-      ],
-    },
-    plugins: [vue(), mode !== 'analyze' ? dts() : undefined],
+    plugins: [
+      vue(),
+      mode !== 'analyze' ? dts({ copyDtsFiles: false }) : undefined,
+    ],
     optimizeDeps: {
       exclude: [
         'vue-demi',
