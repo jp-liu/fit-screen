@@ -24,7 +24,7 @@ export interface FitScreenOptions {
    * Triggered before calculating correction, which can be calculated by return false to cancel
    * Provide the current wide high percentage
    */
-  beforeCalculate?: (scale: Scale) => boolean | undefined
+  beforeCalculate?: (scale: Scale) => boolean | void
   /**
    * After the calculation of correction
    * Provide the current wide high percentage
