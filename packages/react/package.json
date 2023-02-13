@@ -3,12 +3,58 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
+  "author": "jp-liu <fortune_coder@foxmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/jp-liu/@fit-screen/react#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.jp-liu/@fit-screen",
+    "directory": "./packages/react"
+  },
+  "bugs": "https://github.com/jp-liu/@fit-screen#issues",
+  "keywords": [
+    "reactjs",
+    "react",
+    "react-components",
+    "react-plugin",
+    "react-component",
+    "react-resource"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.umd.js",
+      "import": "./dist/index.es.js"
+    },
+    "./style": "./dist/style.css",
+    "./style.css": "./dist/style.css"
+  },
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build:analyze": "tsc && vite build --mode=analyze",
+    "pbs": "npm publish"
   },
   "dependencies": {
+    "@fit-screen/shared": "workspace:^0.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
