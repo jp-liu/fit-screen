@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
               filename: 'stats.html',
               gzipSize: false,
               brotliSize: false,
-            })
+            }) as any
             : undefined,
         ],
         external: ['vue', 'vue-demi'],
@@ -48,7 +48,6 @@ export default defineConfig(({ mode }) => {
           generatedCode: {
             reservedNamesAsProps: false,
           },
-          interop: 'compat',
           systemNullSetters: false,
           exports: 'named',
           globals: {
