@@ -20,10 +20,10 @@ This toolkit provides methods related to assisted computing, as well as a style 
 
 Please refer to the repository root README for details on how to use it.
 
-[Click to go](https://github.com/jp-liu/fit-screen#Extends)
+[Click to go](https://github.com/jp-liu/fit-screen#-extends)
 
 ### 🌰 Example for Svelte
 
 ## License
 
-[MIT](./LICENSE) License © 2022 [jp-liu](
+[MIT](./LICENSE) License © 2022 [jp-liu](https://github.com/jp-liu)

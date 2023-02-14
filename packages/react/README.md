@@ -22,4 +22,4 @@ Please refer to the repository root README for details on how to use it.
 
 ## License
 
-[MIT](./LICENSE) License © 2022 [jp-liu](
+[MIT](./LICENSE) License © 2022 [jp-liu](https://github.com/jp-liu)
