@@ -6,28 +6,27 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@fit-screen/vue" target="__blank"><img src="https://img.shields.io/npm/v/@fit-screen/vue?color=a1b858&label=" alt="NPM version"></a>
+ <a href="https://www.npmjs.com/package/@fit-screen/vue" target="__blank"><img src="https://img.shields.io/npm/v/@fit-screen/vue?color=a1b858&label=" alt="NPM version"></a>
   <a href="https://www.npmjs.com/package/@fit-screen/react" target="__blank"><img src="https://img.shields.io/npm/v/@fit-screen/react?color=50a36f&label=" alt="NPM version"></a>
   <a href="https://www.npmjs.com/package/@fit-screen/shared" target="__blank"><img src="https://img.shields.io/npm/v/@fit-screen/shared?color=1e8a7a&label=" alt="NPM version"></a>
-  <br>
-  <a href="https://github.com/jp-liu/fit-screen" target="__blank">
+ <br>
+ <a href="https://github.com/jp-liu/fit-screen" target="__blank">
     <img alt="GitHub stars" src="https://img.shields.io/github/stars/jp-liu/fit-screen?style=social">
   </a>
 </p>
-
 <p align="center">
   <a href="https://github.com/jp-liu/fit-screen/blob/main/README.md" target="__blank">English</a>
   <a href="https://github.com/jp-liu/fit-screen/blob/main/README_CN.md" target="__blank">简体中文</a>
 </p>
 
-## 🚀 Features
+## 🚀 特性
 
-- 🕶 Seamless migration: Works for Vue 2, Vue3 and React
-- 🌟 Provide public base methods that can be applied to any framework with a little code
-- 🦾 Type Strong: Written in [TypeScript](https://www.typescriptlang.org/), with [TS Docs](https://github.com/microsoft/tsdoc)
-- 🌎 No bundler required: Usable via CDN
+- 支持 `vue2`、`vue3` 以及 `react`
+- 提供公共基础方法，可以适用于任何框架，只要一点点代码
+- 使用 [TypeScript](https://www.typescriptlang.org/) 编写，具有完整的类型提示
+- 无需编译工具，可以通过 CDN 使用
 
-## 🦄 Useage
+## 🦄 用法
 
 ### Vue
 
@@ -39,7 +38,7 @@ yarn add @fit-screen/vue
 pnpm install @fit-screen/vue
 ```
 
-For Vue 2.6 or below, [@vue/composition-api](https://www.npmjs.com/package/@vue/composition-api) is required separately.
+在 `Vue2.7` 以前的版本中(不包含 2.7)，你还需要下载 [@vue/composition-api](https://www.npmjs.com/package/@vue/composition-api)
 
 ```bash
 npm install @fit-screen/vue @vue/composition-api
@@ -49,12 +48,12 @@ yarn add @fit-screen/vue @vue/composition-api
 pnpm install @fit-screen/vue @vue/composition-api
 ```
 
-#### Example: global component
+#### 示例：全局使用
 
 ```js
 //  main.[jt]s
 import { createApp } from 'vue'
-// import style
+// 引入样式
 import '@fit-screen/vue/style.css'
 import FitScreen from '@fit-screen/vue'
 import App from './App.vue'
@@ -64,7 +63,7 @@ app.use(FitScreen)
 app.mount('#app')
 ```
 
-Use in any component
+接下来在任意组件中均可使用
 
 ```vue
 <template>
@@ -82,12 +81,18 @@ Use in any component
 </template>
 ```
 
-#### Example：SFC
+#### 示例：单组件内使用
 
 ```vue
 <script setup>
+import { ref } from 'vue'
 import '@fit-screen/vue/style.css'
 import FitScreen from '@fit-screen/vue'
+const config = ref({
+  width: 1920,
+  height: 1080,
+  mode: 'fit'
+})
 </script>
 
 <template>
@@ -107,12 +112,12 @@ import FitScreen from '@fit-screen/vue'
 
 #### Vue Props
 
-| Props      | Type                                      | Information                                                                                                     |
-| ---------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| width      | number                                    | The design draft width                                                                                          |
-| height     | number                                    | The design draft height                                                                                         |
-| mode       | 'fit' \| 'scroolX' \| 'scroolY' \| 'full' | Calculation mode                                                                                                |
-| scaleStyle | string \| object \| array                 | Adaptive container style, The official Vu3 style usage scheme is fully adopted, with the addition of the prefix |
+| Props      | Type                                      | Information                                                  |
+| ---------- | ----------------------------------------- | ------------------------------------------------------------ |
+| width      | number                                    | 设计稿宽度                                                   |
+| height     | number                                    | 设计稿高度                                                   |
+| mode       | 'fit' \| 'scroolX' \| 'scroolY' \| 'full' | 自适应模式                                                   |
+| scaleStyle | string \| object \| array                 | 自适应 dom 的内联样式，完全采用 Vu3 官方的 style 使用方案，只是添加了前缀 |
 
 #### Vue Interface
 
@@ -149,7 +154,7 @@ yarn add @fit-screen/react
 pnpm install @fit-screen/react
 ```
 
-#### Example for React
+#### 示例
 
 ```react
 import { useState } from 'react'
@@ -192,12 +197,12 @@ export default App
 
 #### React Props
 
-| Props      | Type                                               | Information                                                            |
-| ---------- | -------------------------------------------------- | ---------------------------------------------------------------------- |
-| width      | number                                             | The design draft width                                                 |
-| height     | number                                             | The design draft height                                                |
-| mode       | 'fit' \| 'scroolX' \| 'scroolY' \| 'full'          | Calculation mode                                                       |
-| scaleStyle | object                                    \| array | Adaptive container style, Jsx style objects or arrays of style objects |
+| Props      | Type                                      | Information                                                  |
+| ---------- | ----------------------------------------- | ------------------------------------------------------------ |
+| width      | number                                    | 设计稿宽度                                                   |
+| height     | number                                    | 设计稿高度                                                   |
+| mode       | 'fit' \| 'scroolX' \| 'scroolY' \| 'full' | 自适应模式                                                   |
+| scaleStyle | string \| object \| array                 | 自适应 dom 的内联样式，完全采用 Vu3 官方的 style 使用方案，只是添加了前缀 |
 
 #### React Interface
 
@@ -232,23 +237,23 @@ export interface FitScreenProps {
 }
 ```
 
-## 💻 Extends
+## 💻 扩展
 
-Of course, if you're not using `vue` or `react`, but another framework, you can extend your own adaptive components with a plugin public method, such as using `Svelte`
+当然，如果你使用的不是 `vue` `react`, 而是别的框架，你可以通过插件公共方法扩展自己的自适应组件，比如使用 `Svelte`
 
 ```js
 const a = 'test'
 ```
 
-### 🌰 Example
+### 🌰 示例
 
-#### Vue2.6 or below
+#### Vue2.6 及以下
 
-#### Vue2.7 or 3.0+
+#### Vue2.7 及 3.0 以上
 
-#### React example
+#### React 示例
 
-#### Sevlte example
+#### Sevlte
 
 ## License
 
