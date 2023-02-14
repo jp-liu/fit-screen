@@ -4,20 +4,38 @@ import { useFitScreen } from '../hook/useFitScreen.hook'
 import styles from './FitScreen.module.scss'
 
 export interface FitScreenProps {
-  width: number
-  height: number
-  mode: 'fit' | 'scrollX' | 'scrollY' | 'full'
+  /**
+   * The design draft width
+   * @default 1920
+   */
+  width?: number
+  /**
+   * The design draft height
+   * @default 1080
+   */
+  height?: number
+  /**
+   * Calculation mode
+   */
+  mode?: 'fit' | 'scrollX' | 'scrollY' | 'full'
+  /**
+   * The root container class name
+   */
   className?: string
+  /**
+   * Slots
+   */
   children: React.ReactNode
-  previewStyle?: Record<string, string> | Record<string, string>[]
+  /**
+   * Adaptive container style
+   */
+  scaleStyle?: Record<string, string> | Record<string, string>[]
 }
 
 const InnerFitScreen = React.forwardRef((props: FitScreenProps, ref: React.Ref<HTMLDivElement>) => {
-  const { width, height, mode, previewStyle, className, children } = props
+  const { width = 1920, height = 1080, mode = 'fit', scaleStyle, className, children } = props
 
   const showEntity = mode === FitScreenEnum.SCROLL_Y || mode === FitScreenEnum.SCROLL_X
-
-  const { previewRef, entityRef } = useFitScreen(props)
 
   const previewRefStyle = [
     {
@@ -25,10 +43,10 @@ const InnerFitScreen = React.forwardRef((props: FitScreenProps, ref: React.Ref<H
       width: width ? `${width}px` : '100%',
       height: height ? `${height}px` : '100%',
     },
-    ...(Array.isArray(previewStyle) ? previewStyle : [previewStyle]),
-
+    ...(Array.isArray(scaleStyle) ? scaleStyle : [scaleStyle]),
   ].reduce((style, refStyle) => ({ ...style, ...refStyle }), {})
 
+  const { previewRef, entityRef } = useFitScreen({ width, height, mode })
   const scaleDom = (
     <div ref={previewRef} className={`fit-screen-scale ${styles['fit-screen-scale']}`}>
       {/* 展示层 */}
