@@ -14,9 +14,20 @@ export const useFitScreen = (options: { width: MaybeRef<number>; height: MaybeRe
   // 屏幕适配
   const initFitScreenByMode = () => {
     let fn: typeof useFitScale
+    const options: Parameters<typeof useFitScale>[number] = {
+      width: width.value as number,
+      height: height.value as number,
+      el: previewRef.value!,
+      beforeCalculate(scale) {
+        const dom = entityRef.value!
+        dom.style.width = `${width.value as number * scale.widthRatio}px`
+        dom.style.height = `${height.value as number * scale.heightRatio}px`
+      },
+    }
     switch (mode.value) {
       case FitScreenEnum.FIT:
         fn = useFitScale
+        delete options.beforeCalculate
         break
       case FitScreenEnum.SCROLL_X:
         fn = useScrollXScale
@@ -26,16 +37,14 @@ export const useFitScreen = (options: { width: MaybeRef<number>; height: MaybeRe
         break
       case FitScreenEnum.FULL:
         fn = useFullScale
+        delete options.beforeCalculate
         break
       default:
         fn = useFitScale
+        delete options.beforeCalculate
     }
 
-    return fn({
-      width: width.value as number,
-      height: height.value as number,
-      el: previewRef.value!,
-    })
+    return fn(options)
   }
 
   let calcRate: Function, resize: Function, unResize: Function
