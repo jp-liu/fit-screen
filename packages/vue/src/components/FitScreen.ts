@@ -8,25 +8,39 @@ import styles from './FitScreen.module.scss'
 export default defineComponent({
   name: 'FitScreen',
   props: {
+    /**
+     * The design draft width
+     * @default 1920
+     */
     width: {
       type: Number,
-      required: true,
+      default: 1920,
     },
+    /**
+     * The design draft height
+     * @default 1080
+     */
     height: {
       type: Number,
-      required: true,
+      default: 1080,
     },
+    /**
+     * Calculation mode
+     */
     mode: {
       type: String as PropType<'fit' | 'scrollX' | 'scrollY' | 'full'>,
-      required: true,
+      default: 'fit',
     },
-    previewStyle: {
+    /**
+     * Adaptive container style
+     */
+    scaleStyle: {
       type: [String, Object, Array],
-      default: '',
+      default: () => [],
     },
   },
   setup(props) {
-    const { width, height, mode, previewStyle } = toRefs(props)
+    const { width, height, mode, scaleStyle } = toRefs(props)
 
     const showEntity = computed(() => {
       return mode.value === FitScreenEnum.SCROLL_Y || mode.value === FitScreenEnum.SCROLL_X
@@ -41,7 +55,7 @@ export default defineComponent({
           width: width.value ? `${width.value}px` : '100%',
           height: height.value ? `${height.value}px` : '100%',
         },
-        ...(Array.isArray(previewStyle.value) ? previewStyle.value : [previewStyle.value]),
+        ...(Array.isArray(scaleStyle.value) ? scaleStyle.value : [scaleStyle.value]),
       ]
     })
 
