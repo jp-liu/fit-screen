@@ -4,6 +4,7 @@ import FitScreen from './components/FitScreen'
 
 const installFitScreen = (app: any) => app.component(FitScreen.name, FitScreen)
 
+FitScreen.install = installFitScreen
 export { FitScreen as default, installFitScreen as install }
 
 // For CDN. (Maybe Vue3 only)
