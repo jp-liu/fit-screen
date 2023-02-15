@@ -20,7 +20,7 @@
     "bumpp": "bumpp package.json packages/*/package.json --commit --push --tag",
     "build": "rimraf packages/*/dist && pnpm --filter './packages/*' build",
     "release": "pnpm build && pnpm bumpp && pnpm pbs",
-    "pbs": "pnpm -r --filter !examples run pbs"
+    "pbs": "pnpm -r --filter './packages/*' run pbs"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.26.2",

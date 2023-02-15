@@ -2,7 +2,6 @@
   "name": "@fit-screen/react",
   "type": "module",
   "version": "0.0.1-beta.0",
-  "private": true,
   "author": "jp-liu <fortune_coder@foxmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/jp-liu/@fit-screen/react#readme",
@@ -51,7 +50,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "build:analyze": "tsc && vite build --mode=analyze",
-    "pbs": "npm publish"
+    "pbs": "npm publish --access=public"
   },
   "dependencies": {
     "@fit-screen/shared": "workspace:^0.0.0",
