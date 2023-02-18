@@ -6,7 +6,6 @@ body {
   position: relative;
   height: 100vh;
   width: 100vw;
-
 }
 
 .fit-screen.fit,
@@ -15,12 +14,10 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-
 }
 
 .fit-screen.fit .fit-screen-scale,
 .fit-screen.full .fit-screen-scale {
-
   transform-origin: center center;
 }
 

@@ -56,3 +56,31 @@ export function throttle(func: Function, wait: number, options?: ThrottleOptions
 
   return throttled
 }
+
+export async function classNamePrefix(prefix: string) {
+  if (typeof process === 'undefined' || Object.prototype.toString.call(process) !== '[object process]')
+    return
+
+  if (!prefix || typeof prefix !== 'string')
+    return
+
+  const { fileURLToPath } = await import('url')
+  const { dirname: dirnameFn, resolve } = await import('path')
+  const { existsSync, copyFileSync, readFileSync, writeFileSync } = await import('fs')
+
+  const dirname = dirnameFn(fileURLToPath(import.meta.url))
+  const stylePath = resolve(dirname, './style.css')
+  const originPath = resolve(dirname, './style-origin.css')
+
+  let rPath: string = stylePath
+  if (existsSync(originPath))
+    rPath = originPath
+  else
+    copyFileSync(stylePath, originPath)
+
+  const content = readFileSync(rPath, { encoding: 'utf-8' })
+  const reg = /fit-screen/g
+
+  const newContent = content.replace(reg, prefix)
+  writeFileSync(stylePath, newContent, { encoding: 'utf-8' })
+}
