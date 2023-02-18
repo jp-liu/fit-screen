@@ -32,6 +32,13 @@ export default defineComponent({
       default: 'fit',
     },
     /**
+     * Adaptive container class
+     */
+    scaleClass: {
+      type: [String, Object, Array],
+      default: () => [],
+    },
+    /**
      * Adaptive container style
      */
     scaleStyle: {
@@ -65,7 +72,7 @@ export default defineComponent({
     const previewNode = h(
       'div',
       { ref: 'previewRef', class: ['fit-screen-scale', styles['fit-screen-scale']] },
-      [h('div', { style: this.previewRefStyle }, realSlot(this.$slots.default))],
+      [h('div', { class: this.scaleClass, style: this.previewRefStyle }, realSlot(this.$slots.default))],
     )
 
     const entityNode = h('div', { ref: 'entityRef', class: ['fit-screen-entity', styles['fit-screen-entity']] }, [previewNode])
