@@ -50,7 +50,7 @@ export const useFitScreen = (options: { width: MaybeRef<number>; height: MaybeRe
   let calcRate: Function, resize: Function, unResize: Function
 
   watch([width, height, mode], () => {
-    unResize();
+    unResize?.();
     ({ calcRate, resize, unResize } = initFitScreenByMode())
     calcRate()
     resize()
