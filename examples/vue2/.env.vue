@@ -1,0 +1,2 @@
+VUE_APP_VUE_VERSION=2.7
+VUE_APP_TITLE="Vue2.7 展示示例页面"

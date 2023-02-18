@@ -1,0 +1,34 @@
+{
+  "name": "vue2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:2": "pnpm v2 && vue-cli-service serve --mode=vue2",
+    "dev:2.7": "pnpm v2.7 && vue-cli-service serve --mode=vue",
+    "build": "pnpm v2.7 && vue-cli-service build --mode=vue",
+    "build:2": "pnpm v2 && vue-cli-service build --mode=vue2",
+    "v2": "vue-demi-switch 2 vue2.6 && pnpm -C ../../packages/vue v2",
+    "v2.7": "vue-demi-switch 2.7 && pnpm -C ../../packages/vue v2.7"
+  },
+  "dependencies": {
+    "@fit-screen/vue": "workspace:*",
+    "@jiaminghi/data-view": "^2.10.0",
+    "core-js": "^3.8.3",
+    "vue": "^2.7.14",
+    "vue2.6": "npm:vue@2.6.14"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/composition-api": "^1.7.1",
+    "less": "^4.0.0",
+    "less-loader": "^8.0.0",
+    "vue-demi": "^0.13.11",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
