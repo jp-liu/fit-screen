@@ -3,6 +3,9 @@ import type { FitScreenOptions } from './types'
 import { FitScreenEnum } from './types'
 
 // * 屏幕缩放适配（两边留白）
+export const useFitScreen = (options: FitScreenOptions & { mode: FitScreenEnum }) => createCalcRateFn(options)
+
+// * 屏幕缩放适配（两边留白）
 export const useFitScale = (options: FitScreenOptions) => createCalcRateFn({ ...options, mode: FitScreenEnum.FIT })
 
 // *  X轴撑满，Y轴滚动条
