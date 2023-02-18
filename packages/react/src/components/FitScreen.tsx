@@ -27,13 +27,17 @@ export interface FitScreenProps {
    */
   children: React.ReactNode
   /**
+   * Adaptive container class
+   */
+  scaleClass?: string
+  /**
    * Adaptive container style
    */
   scaleStyle?: Record<string, string> | Record<string, string>[]
 }
 
 const InnerFitScreen = React.forwardRef((props: FitScreenProps, ref: React.Ref<HTMLDivElement>) => {
-  const { width = 1920, height = 1080, mode = 'fit', scaleStyle, className, children } = props
+  const { width = 1920, height = 1080, mode = 'fit', scaleClass, scaleStyle, className, children } = props
 
   const showEntity = mode === FitScreenEnum.SCROLL_Y || mode === FitScreenEnum.SCROLL_X
 
@@ -50,7 +54,7 @@ const InnerFitScreen = React.forwardRef((props: FitScreenProps, ref: React.Ref<H
   const scaleDom = (
     <div ref={previewRef} className={`fit-screen-scale ${styles['fit-screen-scale']}`}>
       {/* 展示层 */}
-      <div style={previewRefStyle}>
+      <div className={scaleClass} style={previewRefStyle}>
         {/* 渲染层 */}
         {children}
       </div>
