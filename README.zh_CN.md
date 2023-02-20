@@ -53,8 +53,6 @@ pnpm install @fit-screen/vue @vue/composition-api
 ```js
 //  main.[jt]s
 import { createApp } from 'vue'
-// 引入样式
-import '@fit-screen/vue/style.css'
 import FitScreen from '@fit-screen/vue'
 import App from './App.vue'
 
@@ -85,14 +83,7 @@ app.mount('#app')
 
 ```vue
 <script setup>
-import { ref } from 'vue'
-import '@fit-screen/vue/style.css'
 import FitScreen from '@fit-screen/vue'
-const config = ref({
-  width: 1920,
-  height: 1080,
-  mode: 'fit'
-})
 </script>
 
 <template>
@@ -112,12 +103,13 @@ const config = ref({
 
 #### Vue Props
 
-| Props      | Type                                      | Information                                                  |
-| ---------- | ----------------------------------------- | ------------------------------------------------------------ |
-| width      | number                                    | 设计稿宽度                                                   |
-| height     | number                                    | 设计稿高度                                                   |
-| mode       | 'fit' \| 'scroolX' \| 'scroolY' \| 'full' | 自适应模式                                                   |
-| scaleStyle | string \| object \| array                 | 自适应 dom 的内联样式，完全采用 Vu3 官方的 style 使用方案，只是添加了前缀 |
+| Props      | Type                                                | Information                                                               |
+| ---------- | --------------------------------------------------- | ------------------------------------------------------------------------- |
+| width      | number                                              | 设计稿宽度                                                                |
+| height     | number                                              | 设计稿高度                                                                |
+| mode       | 'fit' \| 'scroolX' \| 'scroolY' \| 'full'           | 自适应模式                                                                |
+| scaleClass | string \| array                           \| object | 自适应 dom 的类名，完全采用 vue 官方方案，只是添加前缀对外暴露            |
+| scaleStyle | string \| object \| array                           | 自适应 dom 的内联样式，完全采用 Vue 官方的 style 使用方案，只是添加了前缀 |
 
 #### Vue Interface
 
@@ -137,6 +129,10 @@ interface FitScreenProps {
    * Calculation mode
    */
   mode?: 'fit' | 'scrollX' | 'scrollY' | 'full'
+  /**
+   * Adaptive container class
+   */
+  scaleClass?: string | object | Array<object | string>
   /**
    * Adaptive container style
    */
@@ -159,7 +155,6 @@ pnpm install @fit-screen/react
 ```react
 import { useState } from 'react'
 import FitScreen from '@fit-screen/react'
-import '@fit-screen/style.css'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -197,12 +192,13 @@ export default App
 
 #### React Props
 
-| Props      | Type                                      | Information                                                  |
-| ---------- | ----------------------------------------- | ------------------------------------------------------------ |
-| width      | number                                    | 设计稿宽度                                                   |
-| height     | number                                    | 设计稿高度                                                   |
-| mode       | 'fit' \| 'scroolX' \| 'scroolY' \| 'full' | 自适应模式                                                   |
-| scaleStyle | string \| object \| array                 | 自适应 dom 的内联样式，完全采用 Vu3 官方的 style 使用方案，只是添加了前缀 |
+| Props      | Type                                      | Information                                                            |
+| ---------- | ----------------------------------------- | ---------------------------------------------------------------------- |
+| width      | number                                    | 设计稿宽度                                                             |
+| height     | number                                    | 设计稿高度                                                             |
+| mode       | 'fit' \| 'scroolX' \| 'scroolY' \| 'full' | 自适应模式                                                             |
+| scaleClass | string                                    | 自适应 dom 的类名                                                      |
+| scaleStyle | string \| object \| array                 | 自适应 dom 的内联样式, 添加了数组对象的使用方式,帮你把多个对象样式展开 |
 
 #### React Interface
 
@@ -231,6 +227,10 @@ export interface FitScreenProps {
    */
   children: React.ReactNode
   /**
+   * Adaptive container class
+   */
+  scaleClass?: string
+  /**
    * Adaptive container style
    */
   scaleStyle?: Record<string, string> | Record<string, string>[]
@@ -239,11 +239,94 @@ export interface FitScreenProps {
 
 ## 💻 扩展
 
-当然，如果你使用的不是 `vue` `react`, 而是别的框架，你可以通过插件公共方法扩展自己的自适应组件，比如使用 `Svelte`
+当然，如果你使用的不是 `vue` `react`, 而是别的框架，你可以通过插件公共方法扩展自己的自适应组件，比如使用 `Svelte`,
+你可以像这样开发自己的组件
 
-```js
-const a = 'test'
+```tsx
+<script lang="ts">
+  import { FitScreenEnum, useFitScreen } from '@fit-screen/shared'
+  import { onMount } from 'svelte'
+
+  type FitMode = 'fit' | 'scrollX' | 'scrollY' | 'full'
+
+  export let width = 1920
+  export let height = 1080
+  export let mode: FitMode = 'fit'
+
+  let scaleRef: HTMLDivElement
+  let entityRef: HTMLDivElement
+  $: showEntity = mode === FitScreenEnum.SCROLL_X || mode === FitScreenEnum.SCROLL_Y
+
+  $: initFitScreenByMode = () => {
+    const options: Parameters<typeof useFitScreen>[number] = {
+      width,
+      height,
+      mode: mode as FitScreenEnum,
+      el: scaleRef,
+      beforeCalculate(scale) {
+        // If you need X,Y axis scrolling, you need to calculate the entity width and height and add scrolling properties
+        const dom = entityRef!
+        dom.style.width = `${width * scale.widthRatio}px`
+        dom.style.height = `${height * scale.heightRatio}px`
+      },
+    }
+    if (mode === FitScreenEnum.FIT || mode === FitScreenEnum.FULL) {
+      delete options.beforeCalculate
+    }
+
+    return useFitScreen(options)
+  }
+
+  let isMounted = false
+  onMount(() => {
+    isMounted = true
+  })
+
+  let calcRate, resize, unResize
+  $: if (isMounted) {
+    // First rendering, and no events registered
+    // When an update is needed, the event is unregistered and re-registered
+    if (unResize) unResize()
+    ;({ calcRate, resize, unResize } = initFitScreenByMode())
+
+    calcRate()
+    resize()
+  }
+</script>
+
+<div class={`fit-screen ${mode}`}>
+  {#if showEntity}
+    <!-- Entity element, since adaptive scaling is done, require entity dom control in order to calculate scrollbars -->
+    <div bind:this={entityRef} class="fit-screen-entity">
+      <!-- Adaptive element -->
+      <div bind:this={scaleRef} class="fit-screen-scale">
+        <!-- Display element -->
+        <div style={`width: ${width}px; height: ${height}px`}>
+          <!-- Render element -->
+          <slot />
+        </div>
+      </div>
+    </div>
+  {:else}
+    <!-- Adaptive element -->
+    <div bind:this={scaleRef} class="fit-screen-scale">
+      <!-- Display element -->
+      <div style={`width: ${width}px; height: ${height}px`}>
+        <!-- Render element -->
+        <slot />
+      </div>
+    </div>
+  {/if}
+</div>
+
+<style>
+  @import '@fit-screen/shared/style.css';
+</style>
 ```
+
+使用的一些疑问和示例，可以去对应文档查看
+
+**[@fit-screen/shared](https://github.com/jp-liu/fit-screen/blob/main/packages/shared/README.md)**
 
 ### 🌰 示例
 
