@@ -1,0 +1,39 @@
+.bottom-charts {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+
+  .bc-chart-item {
+    width: 25%;
+    height: 100%;
+    padding-top: 20px;
+    box-sizing: border-box;
+  }
+
+  .bcci-header {
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+  }
+
+  .dv-active-ring-chart {
+    height: calc(100% - 80px);
+  }
+
+  .label-tag {
+    height: 30px;
+  }
+
+  .active-ring-name {
+    font-size: 18px !important;
+  }
+
+  .decoration-1,
+  .decoration-2,
+  .decoration-3 {
+    display: absolute;
+    left: 0%;
+  }
+}

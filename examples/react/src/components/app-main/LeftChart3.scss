@@ -1,0 +1,33 @@
+.left-chart-3 {
+  width: 100%;
+  height: 33%;
+  display: flex;
+  flex-direction: column;
+
+  .lc3-header {
+    height: 20px;
+    line-height: 20px;
+    font-size: 16px;
+    text-indent: 20px;
+    margin-top: 10px;
+  }
+
+  .lc3-details {
+    height: 40px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    text-indent: 20px;
+
+    span {
+      color: #096dd9;
+      font-weight: bold;
+      font-size: 35px;
+      margin-left: 20px;
+    }
+  }
+
+  .lc3-chart {
+    flex: 1;
+  }
+}

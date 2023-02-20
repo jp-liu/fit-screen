@@ -1,0 +1,24 @@
+.app-header {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  &-left {
+    font-size: 20px;
+    color: rgb(1, 134, 187);
+
+    a:visited {
+      color: rgb(1, 134, 187);
+    }
+  }
+
+  &-middle {
+    font-size: 30px;
+  }
+
+  &-left,
+  &-right {
+    width: 480px;
+  }
+}

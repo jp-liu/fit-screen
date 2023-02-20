@@ -1,0 +1,34 @@
+{
+  "name": "react",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "dependencies": {
+    "@fit-screen/react": "workspace:0.0.1-beta.0",
+    "@jiaminghi/data-view-react": "^1.0.7",
+    "classnames": "^2.2.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "@jiaminghi/c-render": "^0.4.3",
+    "@jiaminghi/charts": "^0.2.18",
+    "sass": "^1.58.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+.app-main {
+  height: calc(100% - 80px);
+
+  .border-box-content {
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+  }
+
+  &-left {
+    width: 22%;
+    padding: 10px;
+    box-sizing: border-box;
+
+    .border-box-content {
+      flex-direction: column;
+    }
+  }
+
+  &-right {
+    width: 78%;
+    padding-left: 5px;
+    box-sizing: border-box;
+
+    &__top {
+      height: 65%;
+      display: flex;
+
+      &-left {
+        width: 65%;
+      }
+
+      &-right {
+        width: 35%;
+      }
+      .box1,
+      .box2 {
+        height: 50%;
+      }
+    }
+
+    &__bottom {
+      height: 35%;
+    }
+  }
+
+
+}
