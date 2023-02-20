@@ -25,9 +25,7 @@
       "types": "./dist/index.d.ts",
       "require": "./dist/index.umd.js",
       "import": "./dist/index.es.js"
-    },
-    "./style": "./dist/style.css",
-    "./style.css": "./dist/style.css"
+    }
   },
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
@@ -53,7 +51,7 @@
     "pbs": "npm publish --access=public"
   },
   "dependencies": {
-    "@fit-screen/shared": "workspace:^0.0.0",
+    "@fit-screen/shared": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

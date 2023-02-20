@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react'
 import type { UserConfig } from 'vite'
 import { visualizer } from 'rollup-plugin-visualizer'
 import dts from 'vite-plugin-dts'
+import css from 'vite-plugin-css-injected-by-js'
 
 function pathResolve(dir: string) {
   return resolve(__dirname, '.', dir)
@@ -16,6 +17,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       mode !== 'analyze' ? dts({ copyDtsFiles: false }) : undefined,
       react(),
+      css(),
     ],
     build: {
       lib: {

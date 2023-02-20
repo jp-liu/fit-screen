@@ -4,6 +4,7 @@ import type { UserConfig } from 'vite'
 import { defineConfig } from 'vite'
 import { visualizer } from 'rollup-plugin-visualizer'
 import dts from 'vite-plugin-dts'
+import css from 'vite-plugin-css-injected-by-js'
 import vue from '@vitejs/plugin-vue'
 
 function pathResolve(dir: string) {
@@ -16,6 +17,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vue(),
       mode !== 'analyze' ? dts({ copyDtsFiles: false }) : undefined,
+      css(),
     ],
     optimizeDeps: {
       exclude: [
