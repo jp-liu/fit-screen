@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-  <FitScreen id="app" :scale-style="{ display: 'flex', flexDirection: 'column' }">
+  <FitScreen id="app" scale-class="example-vue-scale">
     <AppHeader />
 
     <AppMain />
@@ -24,8 +24,6 @@ export default {
 </template>
 
 <style lang="less">
-@import '@fit-screen/vue/style.css';
-
 #app {
   color: #fff;
   background-color: #030409;
@@ -33,7 +31,10 @@ export default {
   .app-main {
     flex: 1;
   }
-  .fit-screen-scale {
+
+  .example-vue-scale {
+    display: flex;
+    flex-direction: column;
     background-image: url('./assets/img/bg.png');
     background-size: 100% 100%;
     box-shadow: 0 0 3px blue;
