@@ -15,7 +15,6 @@
     "build:ci": "pnpm -C ../../packages/vue build && pnpm build",
     "build:ci2": "pnpm -C ../../packages/vue build && pnpm build:2",
     "build:ci3": "pnpm -C ../../packages/vue build && pnpm build:3"
-
   },
   "dependencies": {
     "@fit-screen/vue": "^0.0.1",
