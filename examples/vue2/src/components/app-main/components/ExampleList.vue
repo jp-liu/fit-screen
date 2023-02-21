@@ -25,7 +25,7 @@ export default {
             color: '#4d99fc',
             fontWeight: 'bold',
           },
-          exampleUrl: '公里',
+          exampleUrl: 'https://fit-screen-example-vue2.vercel.app/',
           codeUrl: 'https://github.com/jp-liu/fit-screen/blob/main/examples/vue2',
         },
         {
@@ -35,7 +35,7 @@ export default {
             color: '#f46827',
             fontWeight: 'bold',
           },
-          exampleUrl: '座',
+          exampleUrl: 'https://fit-screen-example-vue2.vercel.app/',
           codeUrl: 'https://github.com/jp-liu/fit-screen/blob/main/examples/vue2',
         },
         {
@@ -45,7 +45,7 @@ export default {
             color: '#40faee',
             fontWeight: 'bold',
           },
-          exampleUrl: '个',
+          exampleUrl: 'https://fit-screen-example-vue3.vercel.app/',
           codeUrl: 'https://github.com/jp-liu/fit-screen/blob/main/examples/react',
         },
         {
@@ -55,7 +55,7 @@ export default {
             color: '#4d99fc',
             fontWeight: 'bold',
           },
-          exampleUrl: '个',
+          exampleUrl: 'https://fit-screen-example-react.vercel.app/',
           codeUrl: 'https://github.com/jp-liu/fit-screen/blob/main/examples/react',
         },
         {
@@ -65,7 +65,7 @@ export default {
             color: '#f46827',
             fontWeight: 'bold',
           },
-          exampleUrl: '个',
+          exampleUrl: '#',
           codeUrl: 'https://github.com/jp-liu/fit-screen/blob/main/examples/svelte',
         },
         {
