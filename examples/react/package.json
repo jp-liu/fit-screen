@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "build:ci": "pnpm -C ../../ build && pnpm start"
   },
   "dependencies": {
     "@fit-screen/react": "^0.0.1",
