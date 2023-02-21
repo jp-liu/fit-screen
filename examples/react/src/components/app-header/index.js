@@ -14,10 +14,6 @@ export default function AppHeader() {
   return (
     <div className="app-header">
       <div className="app-header-left">
-        技术支持:
-        <a href="https://github.com/DataV-Team/DataV-React">
-          https://github.com/DataV-Team/DataV-React
-        </a>
       </div>
       <div className="app-header-middle">React 示例</div>
       <div className="app-header-right">
