@@ -12,9 +12,9 @@
     "v2": "vue-demi-switch 2 vue2.6 && pnpm -C ../../packages/vue v2",
     "v2.7": "vue-demi-switch 2.7 && pnpm -C ../../packages/vue v2.7",
     "v3": "vue-demi-switch 2.7 && pnpm -C ../../packages/vue v2.7",
-    "build:ci": "pnpm -C ../../packages/vue build && pnpm build",
-    "build:ci2": "pnpm -C ../../packages/vue build && pnpm build:2",
-    "build:ci3": "pnpm -C ../../packages/vue build && pnpm build:3"
+    "build:ci": "pnpm -C ../../ build && pnpm build",
+    "build:ci2": "pnpm -C ../../ build && pnpm build:2",
+    "build:ci3": "pnpm -C ../../ build && pnpm build:3"
   },
   "dependencies": {
     "@fit-screen/vue": "^0.0.1",
