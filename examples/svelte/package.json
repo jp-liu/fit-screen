@@ -10,7 +10,7 @@
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
-    "@fit-screen/shared": "workspace:*"
+    "@fit-screen/shared": "^0.0.1"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.0.2",

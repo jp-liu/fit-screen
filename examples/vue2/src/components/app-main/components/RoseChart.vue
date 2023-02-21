@@ -90,7 +90,7 @@ export default {
   }
 
   .dv-charts-container {
-    height: calc(~"100% - 50px");
+    height: calc(100% - 50px);
   }
 }
 </style>

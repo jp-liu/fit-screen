@@ -16,6 +16,7 @@ switch (VueVersion) {
     }).$mount('#app')
     break
   case '2.7':
+  case '3':
     Vue.config.productionTip = false
 
     Vue.use(dataV)
@@ -24,4 +25,7 @@ switch (VueVersion) {
       render: h => h(App),
     }).$mount('#app')
     break
+  // case '3': {
+  //   createApp(App).mount('#app')
+  // }
 }

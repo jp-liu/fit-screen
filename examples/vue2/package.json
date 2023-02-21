@@ -5,17 +5,21 @@
   "scripts": {
     "dev:2": "pnpm v2 && vue-cli-service serve --mode=vue2",
     "dev:2.7": "pnpm v2.7 && vue-cli-service serve --mode=vue",
+    "dev:3": "pnpm v3 && vue-cli-service serve --mode=vue3",
     "build": "pnpm v2.7 && vue-cli-service build --mode=vue",
     "build:2": "pnpm v2 && vue-cli-service build --mode=vue2",
+    "build:3": "pnpm v3 && vue-cli-service build --mode=vue3",
     "v2": "vue-demi-switch 2 vue2.6 && pnpm -C ../../packages/vue v2",
-    "v2.7": "vue-demi-switch 2.7 && pnpm -C ../../packages/vue v2.7"
+    "v2.7": "vue-demi-switch 2.7 && pnpm -C ../../packages/vue v2.7",
+    "v3": "vue-demi-switch 2.7 && pnpm -C ../../packages/vue v2.7"
   },
   "dependencies": {
-    "@fit-screen/vue": "workspace:*",
+    "@fit-screen/vue": "^0.0.1",
     "@jiaminghi/data-view": "^2.10.0",
     "core-js": "^3.8.3",
     "vue": "^2.7.14",
-    "vue2.6": "npm:vue@2.6.14"
+    "vue2.6": "npm:vue@2.6.14",
+    "vue3": "npm:vue@3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~5.0.0",
