@@ -5,7 +5,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:ci": "pnpm -C ../../ build && pnpm start"
+    "build:ci": "pnpm -C ../../ build && pnpm build"
   },
   "dependencies": {
     "@fit-screen/react": "^0.0.1",
