@@ -11,7 +11,9 @@
     "build:3": "pnpm v3 && vue-cli-service build --mode=vue3",
     "v2": "vue-demi-switch 2 vue2.6 && pnpm -C ../../packages/vue v2",
     "v2.7": "vue-demi-switch 2.7 && pnpm -C ../../packages/vue v2.7",
-    "v3": "vue-demi-switch 2.7 && pnpm -C ../../packages/vue v2.7"
+    "v3": "vue-demi-switch 2.7 && pnpm -C ../../packages/vue v2.7",
+    "build:ci": "pnpm -C ../../packages/vue build && pnpm build"
+
   },
   "dependencies": {
     "@fit-screen/vue": "^0.0.1",
