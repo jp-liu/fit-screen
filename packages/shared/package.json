@@ -6,13 +6,13 @@
   "description": "",
   "author": "jp-liu <fortune_coder@foxmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/jp-liu/@fit-screen/shared#readme",
+  "homepage": "https://github.com/jp-liu/fit-screen/tree/main/packages/shared#fit-screenshared",
   "repository": {
     "type": "git",
-    "url": "git+https://github.jp-liu/@fit-screen",
+    "url": "https://github.com/jp-liu/fit-screen",
     "directory": "./packages/shared"
   },
-  "bugs": "https://github.com/jp-liu/@fit-screen#issues",
+  "bugs": "https://github.com/jp-liu/fit-screen/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {
