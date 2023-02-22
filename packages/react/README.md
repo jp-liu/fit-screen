@@ -104,6 +104,8 @@ export interface FitScreenProps {
 
 ### 🌰 Example
 
+#### **[React](https://vercel.com/jp-liu/fit-screen-example-react)**
+
 ## License
 
 [MIT](./LICENSE) License © 2022 [jp-liu](https://github.com/jp-liu)

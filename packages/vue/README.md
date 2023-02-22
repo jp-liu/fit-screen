@@ -122,9 +122,9 @@ interface FitScreenProps {
 
 ### 🌰 Example
 
-#### Vue2.6 or below
+#### **[Vue2.6 or below](https://vercel.com/jp-liu/fit-screen-example-vue2)**
 
-#### Vue2.7 or 3.0+
+#### **[Vue2.7 or 3.0+](https://vercel.com/jp-liu/fit-screen-example-vue3)**
 
 ## License
 
