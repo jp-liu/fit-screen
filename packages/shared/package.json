@@ -1,7 +1,7 @@
 {
   "name": "@fit-screen/shared",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packageManager": "pnpm@7.9.5",
   "description": "",
   "author": "jp-liu <fortune_coder@foxmail.com>",
