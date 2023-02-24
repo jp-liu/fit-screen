@@ -66,10 +66,10 @@
     }
   },
   "dependencies": {
-    "@fit-screen/shared": "workspace:*",
     "vue-demi": "^0.13.11"
   },
   "devDependencies": {
+    "@fit-screen/shared": "workspace:*",
     "@vitejs/plugin-vue": "^3.0.0",
     "sass": "^1.58.0",
     "typescript": "^4.6.4",
