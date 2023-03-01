@@ -34,7 +34,7 @@ importers:
 
   examples/react:
     specifiers:
-      '@fit-screen/react': ^0.0.1
+      '@fit-screen/react': workspace:*
       '@jiaminghi/c-render': ^0.4.3
       '@jiaminghi/charts': ^0.2.18
       '@jiaminghi/data-view-react': ^1.0.7
@@ -57,7 +57,7 @@ importers:
 
   examples/svelte:
     specifiers:
-      '@fit-screen/shared': ^0.0.1
+      '@fit-screen/shared': workspace:*
       '@sveltejs/vite-plugin-svelte': ^2.0.2
       '@tsconfig/svelte': ^3.0.0
       svelte: ^3.55.1
@@ -78,7 +78,7 @@ importers:
 
   examples/vue2:
     specifiers:
-      '@fit-screen/vue': ^0.0.1
+      '@fit-screen/vue': workspace:*
       '@jiaminghi/data-view': ^2.10.0
       '@vue/cli-plugin-babel': ~5.0.0
       '@vue/cli-service': ~5.0.0
@@ -118,10 +118,10 @@ importers:
       typescript: ^4.6.4
       vite: ^3.0.7
     dependencies:
-      '@fit-screen/shared': link:../shared
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
+      '@fit-screen/shared': link:../shared
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.10
       '@vitejs/plugin-react': 2.2.0_vite@3.2.5
@@ -151,9 +151,9 @@ importers:
       vue2: npm:vue@2.6.14
       vue2.7: npm:vue@2.7.14
     dependencies:
-      '@fit-screen/shared': link:../shared
       vue-demi: 0.13.11_vue@3.2.47
     devDependencies:
+      '@fit-screen/shared': link:../shared
       '@vitejs/plugin-vue': 3.2.0_vite@3.2.5+vue@3.2.47
       sass: 1.58.0
       typescript: 4.9.5

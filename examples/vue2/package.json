@@ -17,7 +17,7 @@
     "build:ci3": "pnpm -C ../../ build && pnpm build:3"
   },
   "dependencies": {
-    "@fit-screen/vue": "^0.0.1",
+    "@fit-screen/vue": "workspace:*",
     "@jiaminghi/data-view": "^2.10.0",
     "core-js": "^3.8.3",
     "vue": "^2.7.14",

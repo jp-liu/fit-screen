@@ -8,7 +8,7 @@
     "build:ci": "pnpm -C ../../ build && pnpm build"
   },
   "dependencies": {
-    "@fit-screen/react": "^0.0.1",
+    "@fit-screen/react": "workspace:*",
     "@jiaminghi/data-view-react": "^1.0.7",
     "classnames": "^2.2.6",
     "react": "^18.2.0",
