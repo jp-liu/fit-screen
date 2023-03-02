@@ -21,8 +21,6 @@ yarn add @fit-screen/vue @vue/composition-api
 # or
 pnpm install @fit-screen/vue @vue/composition-api
 ```
-<!-- Please refer to the repository root README for details on how to use it. -->
-
 ### Global component
 
 ```js
@@ -119,6 +117,12 @@ interface FitScreenProps {
   scaleStyle?: string | object | Array<object>
 }
 ```
+
+#### Events
+
+| event name  | description                                   | params                                             |
+| ----------- | --------------------------------------------- | -------------------------------------------------- |
+| scaleChange | Callback for change in page calculation ratio | scale: { widthRatio: number, heightRatio: number } |
 
 ### 🌰 Example
 

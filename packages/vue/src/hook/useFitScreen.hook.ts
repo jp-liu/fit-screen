@@ -1,11 +1,18 @@
+import type { Scale } from '@fit-screen/shared'
 import { FitScreenEnum, useFitScale, useFullScale, useScrollXScale, useScrollYScale } from '@fit-screen/shared'
 
 import type { Ref } from 'vue-demi'
 import { onMounted, onUnmounted, ref, toRefs, watch } from 'vue-demi'
 
-type MaybeRef<T> = T | Ref<T>
+export type MaybeRef<T> = T | Ref<T>
 
-export const useFitScreen = (options: { width: MaybeRef<number>; height: MaybeRef<number>; mode: MaybeRef<'fit' | 'scrollX' | 'scrollY' | 'full'> }) => {
+export interface UseFitScreenOptions {
+  width: MaybeRef<number>
+  height: MaybeRef<number>
+  mode: MaybeRef<'fit' | 'scrollX' | 'scrollY' | 'full'>
+}
+
+export const useFitScreen = (options: UseFitScreenOptions, emit: (event: 'scaleChange', payload: Scale) => void) => {
   const entityRef = ref<HTMLElement>()
   const previewRef = ref<HTMLElement>()
 
@@ -22,6 +29,9 @@ export const useFitScreen = (options: { width: MaybeRef<number>; height: MaybeRe
         const dom = entityRef.value!
         dom.style.width = `${width.value as number * scale.widthRatio}px`
         dom.style.height = `${height.value as number * scale.heightRatio}px`
+      },
+      afterCalculate(scale) {
+        emit('scaleChange', scale)
       },
     }
     switch (mode.value) {

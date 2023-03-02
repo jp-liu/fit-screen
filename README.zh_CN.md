@@ -140,6 +140,12 @@ interface FitScreenProps {
 }
 ```
 
+#### Vue Events
+
+| 事件名称    | 描述                       | 参数                                               |
+| ----------- | -------------------------- | -------------------------------------------------- |
+| scaleChange | 页面计算比例发生变化的回调 | scale: { widthRatio: number, heightRatio: number } |
+
 ### React
 
 ```bash
@@ -234,6 +240,10 @@ export interface FitScreenProps {
    * Adaptive container style
    */
   scaleStyle?: Record<string, string> | Record<string, string>[]
+  /**
+   * Callback for change in page calculation ratio
+   */
+  onScaleChange?: (scale: { widthRatio: number; heightRatio: number }) => void
 }
 ```
 

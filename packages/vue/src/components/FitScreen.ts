@@ -1,4 +1,5 @@
 import type { PropType } from 'vue-demi'
+import type { Scale } from '@fit-screen/shared'
 import { computed, defineComponent, h, toRefs } from 'vue-demi'
 import { FitScreenEnum } from '@fit-screen/shared'
 import { useFitScreen } from '../hook/useFitScreen.hook'
@@ -46,14 +47,20 @@ export default defineComponent({
       default: () => [],
     },
   },
-  setup(props) {
+  emits: {
+    scaleChange(payload: Scale) {
+      const isNumber = (val: any) => typeof val === 'number'
+      return isNumber(payload.widthRatio) && isNumber(payload.heightRatio)
+    },
+  },
+  setup(props, { emit }) {
     const { width, height, mode, scaleStyle } = toRefs(props)
 
     const showEntity = computed(() => {
       return mode.value === FitScreenEnum.SCROLL_Y || mode.value === FitScreenEnum.SCROLL_X
     })
 
-    const { previewRef, entityRef } = useFitScreen(props)
+    const { previewRef, entityRef } = useFitScreen(props, emit)
 
     const previewRefStyle = computed(() => {
       return [

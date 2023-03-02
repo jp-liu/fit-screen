@@ -34,10 +34,23 @@ export interface FitScreenProps {
    * Adaptive container style
    */
   scaleStyle?: Record<string, string> | Record<string, string>[]
+  /**
+   * Callback for change in page calculation ratio
+   */
+  onScaleChange?: (scale: { widthRatio: number; heightRatio: number }) => void
 }
 
 const InnerFitScreen = React.forwardRef((props: FitScreenProps, ref: React.Ref<HTMLDivElement>) => {
-  const { width = 1920, height = 1080, mode = 'fit', scaleClass, scaleStyle, className, children } = props
+  const {
+    width = 1920,
+    height = 1080,
+    mode = 'fit',
+    scaleClass,
+    scaleStyle,
+    className,
+    children,
+    onScaleChange,
+  } = props
 
   const showEntity = mode === FitScreenEnum.SCROLL_Y || mode === FitScreenEnum.SCROLL_X
 
@@ -50,7 +63,7 @@ const InnerFitScreen = React.forwardRef((props: FitScreenProps, ref: React.Ref<H
     ...(Array.isArray(scaleStyle) ? scaleStyle : [scaleStyle]),
   ].reduce((style, refStyle) => ({ ...style, ...refStyle }), {})
 
-  const { previewRef, entityRef } = useFitScreen({ width, height, mode })
+  const { previewRef, entityRef } = useFitScreen({ width, height, mode, onScaleChange })
   const scaleDom = (
     <div ref={previewRef} className={`fit-screen-scale ${styles['fit-screen-scale']}`}>
       {/* 展示层 */}

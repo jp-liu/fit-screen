@@ -1,11 +1,19 @@
 import * as React from 'react'
+import type { Scale } from '@fit-screen/shared'
 import { FitScreenEnum, useFitScale, useFullScale, useScrollXScale, useScrollYScale } from '@fit-screen/shared'
 
-export const useFitScreen = (options: { width: number; height: number; mode: 'fit' | 'scrollX' | 'scrollY' | 'full' }) => {
+interface UseFitScreen {
+  width: number
+  height: number
+  mode: 'fit' | 'scrollX' | 'scrollY' | 'full'
+  onScaleChange?: (scale: Scale) => void
+}
+
+export const useFitScreen = (options: UseFitScreen) => {
   const entityRef = React.useRef<HTMLDivElement>(null)
   const previewRef = React.useRef<HTMLDivElement>(null)
 
-  const { width, height, mode } = options
+  const { width, height, mode, onScaleChange } = options
 
   // 屏幕适配
   const initFitScreenByMode = () => {
@@ -18,6 +26,9 @@ export const useFitScreen = (options: { width: number; height: number; mode: 'fi
         const dom = entityRef.current!
         dom.style.width = `${width * scale.widthRatio}px`
         dom.style.height = `${height * scale.heightRatio}px`
+      },
+      afterCalculate(scale) {
+        onScaleChange && onScaleChange(scale)
       },
     }
     switch (mode) {

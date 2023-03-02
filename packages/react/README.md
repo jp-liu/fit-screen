@@ -99,6 +99,10 @@ export interface FitScreenProps {
    * Adaptive container style
    */
   scaleStyle?: Record<string, string> | Record<string, string>[]
+  /**
+   * Callback for change in page calculation ratio
+   */
+  onScaleChange?: (scale: { widthRatio: number; heightRatio: number }) => void
 }
 ```
 
