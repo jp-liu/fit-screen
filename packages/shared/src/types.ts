@@ -32,7 +32,7 @@ export interface FitScreenOptions {
   afterCalculate?: (scale: Scale) => void
 }
 
-interface Scale {
+export interface Scale {
   /**
    * Width ratio
    */
