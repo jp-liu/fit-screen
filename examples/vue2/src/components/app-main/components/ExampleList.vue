@@ -1,22 +1,27 @@
 <script>
 export default {
   name: 'DigitalFlop',
+  props: {
+    scale: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
   data() {
     return {
       digitalFlopData: [],
     }
   },
-  mounted() {
-    const { createData } = this
-
-    createData()
-
-    setInterval(createData, 30000)
+  watch: {
+    scale: {
+      handler() {
+        this.createMockData()
+      },
+      deep: true,
+    },
   },
   methods: {
-    createData() {
-      const { randomExtend } = this
-
+    createMockData() {
       this.digitalFlopData = [
         {
           title: 'Vue2.6 or blown',
@@ -69,7 +74,7 @@ export default {
           codeUrl: 'https://github.com/jp-liu/fit-screen/blob/main/examples/svelte',
         },
         {
-          title: '暂无',
+          title: `当前宽度比例：${this.scale?.widthRatio}`,
           style: {
             color: '#40faee',
             fontWeight: 'bold',
@@ -78,7 +83,7 @@ export default {
           codeUrl: '#',
         },
         {
-          title: '暂无',
+          title: `当前高度比例：${this.scale?.heightRatio}`,
           style: {
             color: '#4d99fc',
             fontWeight: 'bold',
@@ -96,12 +101,6 @@ export default {
           codeUrl: '#',
         },
       ]
-    },
-    randomExtend(minNum, maxNum) {
-      if (arguments.length === 1)
-        return parseInt(Math.random() * minNum + 1, 10)
-      else
-        return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10)
     },
   },
 }

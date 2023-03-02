@@ -15,12 +15,13 @@ export default {
     ScrollBoard,
     Cards,
   },
+  props: ['scale'],
 }
 </script>
 
 <template>
   <div class="app-main">
-    <ExampleList />
+    <ExampleList :scale="scale" />
     <div class="app-main__main">
       <RankingBoard />
 

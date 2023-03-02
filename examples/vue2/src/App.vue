@@ -10,16 +10,26 @@ export default {
     AppMain,
   },
   data() {
-    return {}
+    return {
+      scale: {
+        widthRadio: 0,
+        heightRadio: 0,
+      },
+    }
+  },
+  methods: {
+    onScaleChange(scale) {
+      this.scale = scale
+    },
   },
 }
 </script>
 
 <template>
-  <FitScreen id="app" scale-class="example-vue-scale">
+  <FitScreen id="app" scale-class="example-vue-scale" @scaleChange="onScaleChange">
     <AppHeader />
 
-    <AppMain />
+    <AppMain :scale="scale" />
   </FitScreen>
 </template>
 
