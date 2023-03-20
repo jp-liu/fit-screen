@@ -17,7 +17,7 @@
 
 <p align="center">
   <a href="https://github.com/jp-liu/fit-screen/blob/main/README.md" target="__blank">English</a>
-  <a href="https://github.com/jp-liu/fit-screen/blob/main/README_CN.md" target="__blank">简体中文</a>
+  <a href="https://github.com/jp-liu/fit-screen/blob/main/README.zh_CN.md" target="__blank">简体中文</a>
 </p>
 
 ## 🚀 Features
