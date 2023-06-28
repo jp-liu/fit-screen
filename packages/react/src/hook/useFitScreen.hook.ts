@@ -6,6 +6,8 @@ interface UseFitScreen {
   width: number
   height: number
   mode: 'fit' | 'scrollX' | 'scrollY' | 'full'
+  executeMode: 'throttle' | 'debounce' | 'none'
+  waitTime: number
   onScaleChange?: (scale: Scale) => void
 }
 
@@ -13,7 +15,7 @@ export const useFitScreen = (options: UseFitScreen) => {
   const entityRef = React.useRef<HTMLDivElement>(null)
   const previewRef = React.useRef<HTMLDivElement>(null)
 
-  const { width, height, mode, onScaleChange } = options
+  const { width, height, mode, executeMode, waitTime, onScaleChange } = options
 
   // 屏幕适配
   const initFitScreenByMode = () => {
@@ -21,6 +23,8 @@ export const useFitScreen = (options: UseFitScreen) => {
     const options: Parameters<typeof useFitScale>[number] = {
       width,
       height,
+      executeMode,
+      waitTime,
       el: previewRef.current!,
       beforeCalculate(scale) {
         const dom = entityRef.current!

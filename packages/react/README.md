@@ -75,6 +75,16 @@ export interface FitScreenProps {
    */
   height?: number
   /**
+   * Function execution mode for calculating scaling ratio
+   * @default 'throttle'
+   */
+  executeMode: 'throttle' | 'debounce' | 'none'
+  /**
+   * Represents the execution rate for debounce and throttle (unit: ms).
+   * @default 200
+   */
+  waitTime: number
+  /**
    * Calculation mode
    * @tips
    * 'fit': Adaptive

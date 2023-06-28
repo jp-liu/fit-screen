@@ -33,6 +33,25 @@ export default defineComponent({
       default: 'fit',
     },
     /**
+     * Represents the execution mode for calculating scaling ratio.
+     * - throttle: Uses a throttling mechanism to limit the execution frequency.
+     * - debounce: Uses a debouncing mechanism to delay execution until a certain period of inactivity.
+     * - none: Executes the function without any throttling or debouncing.
+     * @default 'throttle'
+     */
+    executeMode: {
+      type: String as PropType<'none' | 'throttle' | 'debounce'>,
+      default: 'throttle',
+    },
+    /**
+     * Represents the execution rate for debounce and throttle (unit: ms).
+     * @default 200
+     */
+    waitTime: {
+      type: Number,
+      default: 200,
+    },
+    /**
      * Adaptive container class
      */
     scaleClass: {

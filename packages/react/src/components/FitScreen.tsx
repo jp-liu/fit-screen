@@ -19,6 +19,19 @@ export interface FitScreenProps {
    */
   mode?: 'fit' | 'scrollX' | 'scrollY' | 'full'
   /**
+   * Represents the execution mode for calculating scaling ratio.
+   * - throttle: Uses a throttling mechanism to limit the execution frequency.
+   * - debounce: Uses a debouncing mechanism to delay execution until a certain period of inactivity.
+   * - none: Executes the function without any throttling or debouncing.
+   * @default 'throttle'
+   */
+  executeMode?: 'throttle' | 'debounce' | 'none'
+  /**
+   * Represents the execution rate for debounce and throttle (unit: ms).
+   * @default 200
+   */
+  waitTime?: number
+  /**
    * The root container class name
    */
   className?: string
@@ -45,6 +58,8 @@ const InnerFitScreen = React.forwardRef((props: FitScreenProps, ref: React.Ref<H
     width = 1920,
     height = 1080,
     mode = 'fit',
+    executeMode = 'throttle',
+    waitTime = 200,
     scaleClass,
     scaleStyle,
     className,
@@ -63,7 +78,7 @@ const InnerFitScreen = React.forwardRef((props: FitScreenProps, ref: React.Ref<H
     ...(Array.isArray(scaleStyle) ? scaleStyle : [scaleStyle]),
   ].reduce((style, refStyle) => ({ ...style, ...refStyle }), {})
 
-  const { previewRef, entityRef } = useFitScreen({ width, height, mode, onScaleChange })
+  const { previewRef, entityRef } = useFitScreen({ width, height, mode, executeMode, waitTime, onScaleChange })
   const scaleDom = (
     <div ref={previewRef} className={`fit-screen-scale ${styles['fit-screen-scale']}`}>
       {/* 展示层 */}

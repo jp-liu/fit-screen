@@ -57,6 +57,18 @@ export function throttle(func: Function, wait: number, options?: ThrottleOptions
   return throttled
 }
 
+export function debounce(func: Function, wait: number) {
+  let timeoutId: ReturnType<typeof setTimeout>
+
+  return function (...args: any[]) {
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      func.apply(this, args)
+    }, wait)
+  }
+}
 export async function classNamePrefix(prefix: string) {
   if (typeof process === 'undefined' || Object.prototype.toString.call(process) !== '[object process]')
     return

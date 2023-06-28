@@ -7,19 +7,32 @@ export enum FitScreenEnum {
 
 export interface FitScreenOptions {
   /**
+   * Adaptive container
+   */
+  el: HTMLElement | null
+  /**
    * The design draft width
    * @default 1920
    */
-  width: number
+  width?: number
   /**
    * The design draft height
    * @default 1080
    */
-  height: number
+  height?: number
   /**
-   * Adaptive container
+   * Represents the execution mode for calculating scaling ratio.
+   * - throttle: Uses a throttling mechanism to limit the execution frequency.
+   * - debounce: Uses a debouncing mechanism to delay execution until a certain period of inactivity.
+   * - none: Executes the function without any throttling or debouncing.
+   * @default 'throttle'
    */
-  el: HTMLElement | null
+  executeMode?: 'throttle' | 'debounce' | 'none'
+  /**
+   * Represents the execution rate for debounce and throttle (unit: ms).
+   * @default 200
+   */
+  waitTime?: number
   /**
    * Triggered before calculating correction, which can be calculated by return false to cancel
    * Provide the current wide high percentage

@@ -157,11 +157,15 @@ Using css files in this way may result in global contamination that.
 
 You can check out this svelte base project created by vite
 
-TODO
+```bash
+git clone git@github.com:jp-liu/fit-screen.git # or
+git clone https://github.com/jp-liu/fit-screen.git
 
-- [ ] release the example to github pages
-
-[Click go to](https://jp-liu.github.io/svelte)
+# Then
+cd fit-screen
+pnpm install
+pnpm dev:svelte
+```
 
 ## License
 

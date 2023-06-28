@@ -10,13 +10,15 @@ export interface UseFitScreenOptions {
   width: MaybeRef<number>
   height: MaybeRef<number>
   mode: MaybeRef<'fit' | 'scrollX' | 'scrollY' | 'full'>
+  executeMode: 'throttle' | 'debounce' | 'none'
+  waitTime: number
 }
 
 export const useFitScreen = (options: UseFitScreenOptions, emit: (event: 'scaleChange', payload: Scale) => void) => {
   const entityRef = ref<HTMLElement>()
   const previewRef = ref<HTMLElement>()
 
-  const { width, height, mode } = toRefs(options)
+  const { width, height, mode, executeMode, waitTime } = toRefs(options)
 
   // 屏幕适配
   const initFitScreenByMode = () => {
@@ -25,6 +27,8 @@ export const useFitScreen = (options: UseFitScreenOptions, emit: (event: 'scaleC
       width: width.value as number,
       height: height.value as number,
       el: previewRef.value!,
+      executeMode: executeMode.value,
+      waitTime: waitTime.value,
       beforeCalculate(scale) {
         const dom = entityRef.value!
         dom.style.width = `${width.value as number * scale.widthRatio}px`

@@ -1,4 +1,4 @@
-import { throttle } from './utils'
+import { debounce, throttle } from './utils'
 import type { FitScreenOptions } from './types'
 import { FitScreenEnum } from './types'
 
@@ -25,6 +25,8 @@ function createCalcRateFn(options: FitScreenOptions & { mode: FitScreenEnum }) {
     height = 1080,
     el,
     mode,
+    executeMode = 'throttle',
+    waitTime = 200,
     beforeCalculate,
     afterCalculate,
   } = options
@@ -76,7 +78,21 @@ function createCalcRateFn(options: FitScreenOptions & { mode: FitScreenEnum }) {
     }
   }
 
-  const tFn = throttle(() => { calcRate() }, 200, { trailing: true })
+  let tFn = () => {}
+  switch (executeMode) {
+    case 'none':
+      tFn = calcRate
+      break
+    case 'debounce':
+      tFn = debounce(() => { calcRate() }, waitTime)
+      break
+    case 'throttle':
+      tFn = throttle(() => { calcRate() }, waitTime, { trailing: true })
+      break
+    default:
+      tFn = throttle(() => { calcRate() }, waitTime, { trailing: true })
+      break
+  }
 
   // * 改变窗口大小重新绘制
   const resize = () => {
