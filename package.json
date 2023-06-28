@@ -18,6 +18,7 @@
     "dev:vue2.7": "pnpm -C packages/vue dev:2.7",
     "dev:vue3": "pnpm -C packages/vue dev",
     "dev:react": "pnpm -C packages/react dev",
+    "dev:svelte": "pnpm -C packages/svelte dev",
     "bumpp": "bumpp package.json packages/*/package.json --commit --push --tag",
     "build": "rimraf packages/*/dist && pnpm --filter './packages/*' build",
     "release": "pnpm build && pnpm bumpp && pnpm pbs",
