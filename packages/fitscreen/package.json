@@ -1,0 +1,70 @@
+{
+  "name": "fitscreen.js",
+  "type": "module",
+  "version": "0.0.2",
+  "packageManager": "pnpm@7.9.5",
+  "description": "Scale-based large-screen adaptive solution",
+  "author": "jp-liu <fortune_coder@foxmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/jp-liu/fit-screen/tree/main/packages/shared#fit-screenshared",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jp-liu/fit-screen",
+    "directory": "./packages/shared"
+  },
+  "bugs": "https://github.com/jp-liu/fit-screen/issues",
+  "keywords": [
+    "js",
+    "origin-js",
+    "fit-screen",
+    "auto-screen",
+    "big-screen",
+    "data",
+    "screen"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/fitscreen.js",
+      "import": "./dist/index.es.js"
+    },
+    "./style": "./dist/style.css",
+    "./style.css": "./dist/style.css"
+  },
+  "main": "./dist/fitscreen.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "clean": "rimraf ./dist/**",
+    "build": "pnpm run clean && pnpm origin & pnpm minify",
+    "origin": "vite build",
+    "minify": "vite build --mode minify",
+    "pbs": "npm publish --access=public"
+  },
+  "dependencies": {
+    "@fit-screen/shared": "workspace:^"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.1",
+    "@types/node": "^18.7.14",
+    "rollup": "^3.25.3",
+    "typescript": "^4.8.2",
+    "unbuild": "^0.8.9"
+  }
+}
