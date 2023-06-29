@@ -3,6 +3,7 @@
   <br>
   <br>
   Scale-based large-screen adaptive solution
+  Everything is based on the design draft's px size, and the adaptation is done by scale, everything is so simple
 </p>
 
 <p align="center">
@@ -67,6 +68,87 @@ If you're not familiar with using React components, you can see a more detailed 
 
 [Click to go](https://github.com/jp-liu/fit-screen/blob/main/packages/react/README.md#-useage)
 
+### No Framework
+
+```html
+<html lang="en">
+<head>xxx</head>
+<body>
+  <!-- In the contents of the screen will be presented -->
+  <div class="screen">
+    <div class="test-left">xxx</div>
+    <div class="test-center">xxx</div>
+    <div class="test-right">xxx</div>
+  </div>
+
+  <!-- <script src="https://unpkg.com/fitscreen.js/dist/fitscreen.min.js"></script> -->
+  <script src="https://unpkg.com/fitscreen.js/dist/fitscreen.js"></script>
+  <script>
+    FitScreen({
+      el: document.querySelector('.test'),
+      width:1920,
+      height:1080,
+      mode:'fit',
+      executeMode:'debounce',
+      waitTime:300,
+      beforeCalculate(scale) {},
+      afterCalculate(scale) {},
+    })
+  </script>
+</body>
+</html>
+```
+
+[Parameters Detail](https://github.com/jp-liu/fit-screen/blob/main/packages/fitscreen/README.md)
+
+## 🚨 Note
+
+You may encounter the following problems:
+
+1. When components such as `modal` and `message` in the `UI` component library are used in the project, these `modal` and `message` will directly create a new `dom`, which will not be affected by `scale`. Causes its size not to change according to `scale`.
+
+   solution: You can listen to the `scaleChange` event sent by the component, or get the current scale in the `afterafterCalculate` callback function, and then dynamically set `css`
+
+   ```js
+   // example for ElementUI MessageBox
+   const ins = this.$message('test')
+   // tanslateX is needed for elementUI positioning and centering, and needs to be reserved to avoid overwriting the transform attribute. Development depends on the actual situation
+   ins.$el.style.transform: = scale( 动态比例 ) translateX(-50%);
+   // // It needs to be set as the zoom-in/zoom-out point, because the positioning is based on the left border left of the element, so here is left, you can change it according to the actual situation
+   ins.$el.style.transformOrigin = 'left center';
+
+   // or
+   const msg = document.querySelectorAll('.el-message')
+   const els = Array.from(msg)
+   els.forEach((el) => {
+     el.style.transform: = scale(0.8) translateX(-50%);
+     el.style.transformOrigin = left center;
+   })
+   ```
+
+2. When encountering some map-like (map) large screens, because the canvas canvas is involved, the global scale method may cause map offsets, map interaction confusion, etc..
+
+   Reason: Because the map is drawn on canvas, after the scale is set, the orientation corresponding to the click and other events is different from when it was just drawn, just like the retina screen of the Apple mobile phone. Under the 2x and 3x screens, a point corresponds to 2 and 3 pixels, and when drawing is 1 point to 1 point, so the solution is also simple.。
+
+   Solution: Redraw the map by listening to the `scaleChange` event emitted by the component, or in the `afterafterCalculate` callback function.
+
+3. Chart event hotspot offset, in most cases, will not be involved, if you encounter it, please try the following solutions
+
+   1. Not sure if it works, because I haven't found this problem yet, answers from netizens in the comment area
+
+      ```js
+      // There is a solution to echarts hot zone offset, add this style to the div that renders echarts
+      const style = `
+        width:${(1 / scale) * 100}%;
+        height: Design element height;
+        zoom:${1 / scale};
+        transform:scale(${scale});
+        transform-origin:0% 0%`
+      ```
+
+> I don't know if it can solve your problem. If not, you can discuss it in `issues`. If you have a problem and solve it, you are welcome to raise a `PR` to help others.
+> If this project helps you, please give me a star thank you.😎
+
 ## 💻 Extends
 
 Of course, if you're not using `vue` or `react`, but another framework, you can extend your own adaptive components with a plugin public method, such as using `Svelte`
@@ -75,13 +157,16 @@ Of course, if you're not using `vue` or `react`, but another framework, you can 
 
 ### 🌰 Example
 
-#### Vue2.6 or below
+#### **[Vue2.6 or below](https://vercel.com/jp-liu/fit-screen-example-vue2)**
 
-#### Vue2.7 or 3.0+
+#### **[Vue2.7 or 3.0+](https://vercel.com/jp-liu/fit-screen-example-vue3)**
 
-#### React example
+#### **[React](https://vercel.com/jp-liu/fit-screen-example-react)**
 
-#### Sevlte example
+#### Svelte example
+
+[Svelte](https://codesandbox.io/s/fit-screen-shared-svelte-yx5syh)
+[Stackblitz](https://stackblitz.com/edit/vitejs-vite-ucymtl?file=README.md)
 
 ## License
 

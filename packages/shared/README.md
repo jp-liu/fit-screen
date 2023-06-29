@@ -155,6 +155,9 @@ Using css files in this way may result in global contamination that.
 
 ## 🌰 Example
 
+[Svelte](https://codesandbox.io/s/fit-screen-shared-svelte-yx5syh)
+[Stackblitz](https://stackblitz.com/edit/vitejs-vite-ucymtl?file=README.md)
+
 You can check out this svelte base project created by vite
 
 ```bash
