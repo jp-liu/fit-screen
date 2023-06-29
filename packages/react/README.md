@@ -1,6 +1,7 @@
 # @fit-screen/react
 
 Scale-based large-screen adaptive solution for React
+Everything is based on the design draft's px size, and the adaptation is done by scale, everything is so simple
 
 ## 🦄 Useage
 

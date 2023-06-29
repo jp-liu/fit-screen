@@ -19,7 +19,12 @@
     "vue3",
     "vue-plugin",
     "vue-component",
-    "vue-resource"
+    "vue-resource",
+    "big-screen",
+    "data",
+    "screen",
+    "fit-screen",
+    "auto-screen"
   ],
   "sideEffects": false,
   "exports": {

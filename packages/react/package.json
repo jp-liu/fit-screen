@@ -17,7 +17,12 @@
     "react-components",
     "react-plugin",
     "react-component",
-    "react-resource"
+    "react-resource",
+    "big-screen",
+    "data",
+    "screen",
+    "fit-screen",
+    "auto-screen"
   ],
   "sideEffects": false,
   "exports": {
