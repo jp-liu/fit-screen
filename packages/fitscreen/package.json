@@ -1,7 +1,7 @@
 {
   "name": "fitscreen.js",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "packageManager": "pnpm@7.9.5",
   "description": "Scale-based large-screen adaptive solution",
   "author": "jp-liu <fortune_coder@foxmail.com>",
@@ -55,7 +55,8 @@
     "build": "pnpm run clean && pnpm origin & pnpm minify",
     "origin": "vite build",
     "minify": "vite build --mode minify",
-    "pbs": "npm publish --access=public"
+    "pbs": "npm publish --access=public",
+    "release": "pnpm build && pnpm pbs"
   },
   "dependencies": {
     "@fit-screen/shared": "workspace:^"
