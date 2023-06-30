@@ -101,7 +101,7 @@ importers:
         version: 4.9.5
       vite:
         specifier: ^4.1.0
-        version: 4.1.1(@types/node@18.13.0)(terser@5.16.3)
+        version: 4.1.1(@types/node@18.13.0)
 
   examples/vue2:
     dependencies:
@@ -403,7 +403,7 @@ packages:
       '@babel/helper-compilation-targets': 7.20.7(@babel/core@7.20.12)
       '@babel/helper-module-transforms': 7.20.11
       '@babel/helpers': 7.20.13
-      '@babel/parser': 7.20.15
+      '@babel/parser': 7.22.5
       '@babel/template': 7.20.7
       '@babel/traverse': 7.20.13
       '@babel/types': 7.20.7
@@ -951,13 +951,6 @@ packages:
       '@babel/helper-validator-identifier': 7.22.5
       chalk: 2.4.2
       js-tokens: 4.0.0
-
-  /@babel/parser@7.20.15:
-    resolution: {integrity: sha512-DI4a1oZuf8wC+oAJA9RW6ga3Zbe8RZFt7kD9i4qAspz3I/yHet1VvC3DiSy/fsUvv5pvJuNPh0LPOdCcqinDPg==}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
-    dependencies:
-      '@babel/types': 7.22.5
 
   /@babel/parser@7.22.5:
     resolution: {integrity: sha512-DFZMC9LJUG9PLOclRC32G63UXwzqS2koQC8dkx+PLdmt1xSePYpbT/NbsrJy8Q/muXz7o/h/d4A7Fuyixm559Q==}
@@ -4116,7 +4109,7 @@ packages:
       magic-string: 0.27.0
       svelte: 3.55.1
       svelte-hmr: 0.15.1(svelte@3.55.1)
-      vite: 4.1.1(@types/node@18.13.0)(terser@5.16.3)
+      vite: 4.1.1(@types/node@18.13.0)
       vitefu: 0.2.4(vite@4.1.1)
     transitivePeerDependencies:
       - supports-color
@@ -14074,7 +14067,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite@4.1.1(@types/node@18.13.0)(terser@5.16.3):
+  /vite@4.1.1(@types/node@18.13.0):
     resolution: {integrity: sha512-LM9WWea8vsxhr782r9ntg+bhSFS06FJgCvvB0+8hf8UWtvaiDagKYWXndjfX6kGl74keHJUcpzrQliDXZlF5yg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -14104,7 +14097,6 @@ packages:
       postcss: 8.4.21
       resolve: 1.22.1
       rollup: 3.25.3
-      terser: 5.16.3
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -14117,7 +14109,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.1.1(@types/node@18.13.0)(terser@5.16.3)
+      vite: 4.1.1(@types/node@18.13.0)
     dev: true
 
   /vue-demi@0.13.11(@vue/composition-api@1.7.1)(vue@3.2.47):
