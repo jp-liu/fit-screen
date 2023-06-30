@@ -1,7 +1,7 @@
 {
   "name": "@fit-screen/monorepo",
   "type": "module",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "private": true,
   "packageManager": "pnpm@7.9.5",
   "description": "",
@@ -19,10 +19,12 @@
     "dev:vue3": "pnpm -C packages/vue dev",
     "dev:react": "pnpm -C packages/react dev",
     "dev:svelte": "pnpm -C packages/svelte dev",
-    "bumpp": "bumpp package.json packages/*/package.json --commit --push --tag",
-    "build": "rimraf packages/*/dist && pnpm --filter './packages/*' build",
+    "bumpp": "bumpp package.json packages/*/package.json !packages/fitscreen/package.json --commit --push --tag",
+    "build": "rimraf packages/*/dist && pnpm --filter '@fit-screen/*' build",
+    "build:js": "pnpm --filter 'fitscreen.js' build && bumpp packages/fitscreen/package.json",
     "release": "pnpm build && pnpm bumpp && pnpm pbs",
-    "pbs": "pnpm -r --filter './packages/*' run pbs"
+    "release:js": "pnpm build:js && pnpm bumpp && pnpm --filter 'fitscreen.js' pbs",
+    "pbs": "pnpm -r --filter '@fit-screen/*' pbs"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.26.2",

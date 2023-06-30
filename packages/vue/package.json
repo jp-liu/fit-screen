@@ -1,7 +1,7 @@
 {
   "name": "@fit-screen/vue",
   "type": "module",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "author": "jp-liu <fortune_coder@foxmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/jp-liu/fit-screen/tree/main/packages/vue#fit-screenvue",
