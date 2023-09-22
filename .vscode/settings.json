@@ -1,7 +1,8 @@
 {
   "prettier.enable": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": true,
+    "source.sortPackageJson": false
   },
   "typescript.tsdk": "node_modules/typescript/lib"
 }
