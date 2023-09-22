@@ -38,18 +38,18 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "scripts": {
+    "build": "vite build",
     "dev": "unbuild --stub",
-    "start": "esno src/index.ts",
-    "build": "unbuild",
-    "pbs": "npm publish --access=public"
+    "pbs": "npm publish --access=public",
+    "start": "esno src/index.ts"
   },
   "devDependencies": {
     "@types/node": "^18.7.14",
     "typescript": "^4.8.2",
     "unbuild": "^0.8.9"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }

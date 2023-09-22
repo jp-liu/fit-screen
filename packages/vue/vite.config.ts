@@ -59,7 +59,7 @@ export default defineConfig(({ mode }) => {
         },
       },
       // Minify option
-      target: 'esnext',
+      target: 'es2015',
       minify: false,
     },
   }
