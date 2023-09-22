@@ -70,8 +70,10 @@ export function debounce(func: Function, wait: number) {
   }
 }
 export async function classNamePrefix(prefix: string) {
-  if (typeof process === 'undefined' || Object.prototype.toString.call(process) !== '[object process]')
+  if (typeof process === 'undefined' || Object.prototype.toString.call(process) !== '[object process]') {
+    console.warn('classNamePrefix: process is not defined')
     return
+  }
 
   if (!prefix || typeof prefix !== 'string')
     return
