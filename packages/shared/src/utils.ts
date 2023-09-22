@@ -78,9 +78,12 @@ export async function classNamePrefix(prefix: string) {
   if (!prefix || typeof prefix !== 'string')
     return
 
-  const { fileURLToPath } = await import('url')
-  const { dirname: dirnameFn, resolve } = await import('path')
-  const { existsSync, copyFileSync, readFileSync, writeFileSync } = await import('fs')
+  const url = 'url'
+  const fs = 'fs'
+  const path = 'path'
+  const { fileURLToPath } = await import(url)
+  const { dirname: dirnameFn, resolve } = await import(path)
+  const { existsSync, copyFileSync, readFileSync, writeFileSync } = await import(fs)
 
   const dirname = dirnameFn(fileURLToPath(import.meta.url))
   const stylePath = resolve(dirname, './style.css')

@@ -23,18 +23,6 @@ export default defineConfig({
         copyFileSync(pathResolve('./src/style.css'), pathResolve('./dist/style.css'))
       },
     },
-    {
-      name: 'vite:clean',
-      enforce: 'post',
-      apply: 'build',
-      writeBundle() {
-        const files = readdirSync(pathResolve('./dist'))
-        files.forEach((item) => {
-          if (item.startsWith('__vite-browser'))
-            rmSync(pathResolve(`./dist/${item}`))
-        })
-      },
-    },
   ],
   build: {
     lib: {
