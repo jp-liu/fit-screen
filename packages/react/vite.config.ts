@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
             }) as any
             : undefined,
         ],
-        external: ['react'],
+        external: ['react', 'react-dom', 'react/jsx-runtime'],
         output: {
           esModule: true,
           generatedCode: {
@@ -48,7 +48,9 @@ export default defineConfig(({ mode }) => {
           systemNullSetters: false,
           exports: 'named',
           globals: {
-            react: 'React',
+            react: "React",
+            "react-dom": "ReactDOM",
+            "react/jsx-runtime": "jsx"
           },
         },
       },
