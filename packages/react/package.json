@@ -55,15 +55,17 @@
     "build:analyze": "tsc && vite build --mode=analyze",
     "pbs": "npm publish --access=public"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
   },
   "devDependencies": {
     "@fit-screen/shared": "workspace:*",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "typescript": "^4.6.4",
     "vite": "^3.0.7"
   }
